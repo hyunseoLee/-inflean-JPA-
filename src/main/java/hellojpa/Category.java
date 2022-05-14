@@ -7,10 +7,8 @@ import java.util.List;
 @Entity
 public class Category {
     @Id @GeneratedValue
-    @Column(name="CATEGORY_ID")
+    @Column(name= "CATEGORY_ID")
     private Long id;
-
-    private String name;
 
     @ManyToMany
     @JoinTable(name="CATEGORY_ITEM",
