@@ -10,8 +10,10 @@ public class Member {
 
     @Column(name= "name")
     private String name;
-
     private Integer age;
+
+    @Embedded
+    private Address address;
 
    // @Enumerated(EnumType.STRING)
    // private RoleType roleType; //회원구분
@@ -40,4 +42,13 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }
+

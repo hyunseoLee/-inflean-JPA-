@@ -12,11 +12,8 @@ public class Delivery {
     /* ManyToOne 또는 OneToOne 연관관계는 즉시로딩이 기본값이기 때문에 지연로딩으로 변경 필수 ! */
     private Order order;
 
-    private String city;
-    private String street;
-    private String zipcode;
-
-    private DeliveryStatus status;
+    @Embedded
+    private Address address; 
 
 
 }
