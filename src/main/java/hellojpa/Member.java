@@ -15,6 +15,10 @@ public class Member {
     @Embedded
     private Address address;
 
+    @ManyToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name="TEAM_ID")
+    private Team team;
+
    // @Enumerated(EnumType.STRING)
    // private RoleType roleType; //회원구분
 
@@ -49,6 +53,14 @@ public class Member {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
 

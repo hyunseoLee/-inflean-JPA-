@@ -26,10 +26,24 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="PRODUCT_ID")
+    private Product product;
+
     private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    private int orderAmount;
+
+    public int getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
+    }
 
     private void addOrderItem(OrderItem orderItem){
         orderItems.add(orderItem);

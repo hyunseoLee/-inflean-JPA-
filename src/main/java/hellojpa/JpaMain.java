@@ -1,9 +1,6 @@
 package hellojpa;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.List;
 
 public class JpaMain  {
@@ -19,6 +16,14 @@ public class JpaMain  {
             Member member= new Member();
             member.setName("userA");
             em.persist(member);
+
+            /*반환 타입이 명확할 때*/
+            TypedQuery<Member> members = em.createQuery("select m from Member m", Member.class);
+            /*반환 타입이 명확하지 않을 때*/
+            Query query = em.createQuery("select m.name, m.age from Member m");
+
+            List<Member> resultList = members.getResultList();
+
 
             em.flush();
             em.clear();
