@@ -17,7 +17,8 @@ public class Category {
     )
     private List<Item> items= new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    /* ManyToOne 연관관계는 즉시로딩이 기본값이기 때문에 지연로딩으로 변경 필수 ! */
     @JoinColumn(name="PARENT_ID")
     private Category parent;
 

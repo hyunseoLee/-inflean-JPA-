@@ -8,11 +8,13 @@ public class OrderItem {
     @Column(name="ORDER_ITEM_ID")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    /* ManyToOne 또는 OneToOne 연관관계는 즉시로딩이 기본값이기 때문에 지연로딩으로 변경 필수 ! */
     @JoinColumn(name="ORDER_ID")
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
+    /* ManyToOne 또는 OneToOne 연관관계는 즉시로딩이 기본값이기 때문에 지연로딩으로 변경 필수 ! */
     @JoinColumn(name="ITEM_ID")
     private Item item;
 

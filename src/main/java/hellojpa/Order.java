@@ -12,15 +12,18 @@ public class Order {
     @Column(name="ORDER_ID")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    /* ManyToOne 또는 OneToOne 연관관계는 즉시로딩이 기본값이기 때문에 지연로딩으로 변경 필수 ! */
     @JoinColumn(name="MEMBER_ID")
     private Member member;
 
-    @OneToOne
+    @OneToOne(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+    /* ManyToOne 또는 OneToOne 연관관계는 즉시로딩이 기본값이기 때문에 지연로딩으로 변경 필수 ! */
+    /* cascade=All 속성은 order 저장 시 ->Delivery 저장되도록 영속성 전이값 설정 */
     @JoinColumn(name="DELIVERY_ID")
     private Delivery delivery;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     private LocalDateTime orderDate;
