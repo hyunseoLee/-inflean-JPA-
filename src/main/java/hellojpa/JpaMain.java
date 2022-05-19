@@ -21,8 +21,16 @@ public class JpaMain  {
             TypedQuery<Member> members = em.createQuery("select m from Member m", Member.class);
             /*반환 타입이 명확하지 않을 때*/
             Query query = em.createQuery("select m.name, m.age from Member m");
-
             List<Member> resultList = members.getResultList();
+
+            //1. JPQL 사용
+            List<Member> members2 = em.createQuery("select m from Member m", Member.class)
+                                    .getResultList();
+
+
+            //2. QueryDSL 사용
+
+
 
 
             em.flush();
