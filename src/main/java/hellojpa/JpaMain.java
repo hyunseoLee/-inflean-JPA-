@@ -24,7 +24,7 @@ public class JpaMain  {
             List<Member> resultList = members.getResultList();
 
             //1. JPQL 사용
-            List<Member> members2 = em.createQuery("select m from Member m", Member.class)
+            List<Member> members3 = em.createQuery("select m from Member m", Member.class)
                                     .getResultList();
 
 
